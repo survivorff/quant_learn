@@ -1,0 +1,81 @@
+# ---- 密钥与配置（最重要，绝不能提交）----
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.*
+config.local.*
+api_keys.*
+credentials*
+
+# ---- 数据（体积大，不进 git）----
+data/
+datasets/
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.db
+*.sqlite
+*.sqlite3
+*.csv.gz
+raw/
+cache/
+
+# ---- 模型与实验产物 ----
+models/
+checkpoints/
+*.pkl
+*.joblib
+*.onnx
+mlruns/
+wandb/
+outputs/
+artifacts/
+
+# ---- 回测结果（保留报告，忽略中间产物）----
+backtest_results/
+!backtest_results/*.md
+tearsheets/*.html
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+venv/
+.venv/
+env/
+.python-version
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---- Rust / C++（低延迟部分）----
+target/
+*.o
+*.a
+cmake-build-*/
+
+# ---- 编辑器与系统 ----
+.DS_Store
+.idea/
+*.iml
+.vscode/*
+!.vscode/settings.json
+*.swp
+*~
+
+# ---- 日志 ----
+logs/
+*.log
+nohup.out
