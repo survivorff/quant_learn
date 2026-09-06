@@ -1,9 +1,28 @@
 # quant_learn
 
-> 从零到前沿的量化交易学习仓库。目标不是"读完一堆书"，而是**长出一套自己能跑、能扛回撤、能持续迭代的交易系统**。
+> **实践优先的量化交易仓库。** 目标不是"读完一堆书"，而是**长出一套自己能跑、能扛回撤、能持续迭代的交易系统**。
 >
 > 起点：10 年+ 后端工程师（Java / 高并发 / 分布式）+ Crypto 一线经验。
 > 终点：能独立完成"数据 → 因子 → 回测 → 风控 → 实盘 → 复盘"闭环的系统化交易者。
+
+---
+
+## 📐 定位：这个仓库做什么，不做什么
+
+学习被拆成两个并行的仓库，节奏完全不同：
+
+| 仓库 | 角色 | 节奏 | 产出 |
+|---|---|---|---|
+| **quant_learn**（本仓库） | **实践与工程**：数据、回测、因子、风控、实盘系统 | **快，按周计** | 可运行的代码、实盘系统、交易记录 |
+| [**math_learn**](https://github.com/survivorff/math_learn) | **理论地基**：英文原版数学（线代/概率/统计/优化…） | 慢，按月计 | 做题、英文笔记、数学工具的实现 |
+
+**本仓库的原则**：
+- ✅ **做**：能立刻上手的、我已有优势的方向 —— crypto 场内结构、交易系统工程、资金费/价差套利、因子研究流水线
+- ✅ **做**：数学"够用即止"，只讲量化专用的结论与陷阱
+- ❌ **不做**：数学的系统推导与证明 —— 那些去 [`math_learn`](https://github.com/survivorff/math_learn)
+
+> **不要等数学学完再动手。** 两条线并行：`quant_learn` 提供动手场景，`math_learn` 提供地基。
+> 在这里被数学卡住时，用 [math_learn 的"数学 → 量化对照表"](https://github.com/survivorff/math_learn/blob/main/ROADMAP.md) 反查该补哪一块。
 
 ---
 
@@ -30,7 +49,7 @@
 
 | 阶段 | 模块 | 预计投入 | 出口标准（做到才算过） |
 |---|---|---|---|
-| 1 | [`00-foundations`](./00-foundations/) | 3-4 周 | 能用 Python 拉数据、算收益率序列、做平稳性/相关性检验 |
+| 1 | [`00-foundations`](./00-foundations/) | 2-3 周 | 能用 Python 拉数据、算收益率序列、做平稳性/相关性检验（**数学原理见 math_learn**） |
 | 1 | [`01-market-microstructure`](./01-market-microstructure/) | 2-3 周 | 能讲清限价单簿撮合、滑点来源、perp 资金费与强平机制 |
 | 1 | [`02-strategy-zoo`](./02-strategy-zoo/) | 3-4 周 | 能对任一策略说出：收益来源 / 失效条件 / 容量上限 |
 | 2 | [`03-research-infra`](./03-research-infra/) | 4-6 周 | 有自己的回测框架 + 因子评估流水线，能识别 6 类回测偏差 |
@@ -52,7 +71,7 @@ quant_learn/
 ├── TRACKING.md                # 每周追踪（学习 KPI + 实盘 KPI）
 ├── GLOSSARY.md                # 中英术语表（面试 & 读论文用）
 │
-├── 00-foundations/            # ① 基础：数学 / 统计 / 时间序列 / Python / 市场常识
+├── 00-foundations/            # ① 基础：量化专用结论与陷阱（数学原理 → math_learn）
 ├── 01-market-microstructure/ # ② 市场微观结构：订单簿 / 成本 / crypto 场内结构 / MEV
 ├── 02-strategy-zoo/          # ③ 策略图谱：趋势 / 统计套利 / 做市 / 套利 / 期权 / crypto native
 ├── 03-research-infra/        # ④ 研究基础设施：数据 / 回测 / 因子 / 评估 / 回测陷阱
@@ -81,6 +100,8 @@ quant_learn/
 | AI 工程化（Agent / LLM 落地） | LLM 辅助因子挖掘、研究流水线自动化、替代数据 NLP |
 
 > 结论：**主攻 Crypto 量化 + 交易系统工程**，把 ML/统计当工具补齐，不当主战场。
+>
+> 数学不是不学，是**放在 [`math_learn`](https://github.com/survivorff/math_learn) 里按自己的节奏长期补**，不阻塞这里的实践进度。
 
 ---
 
@@ -96,6 +117,7 @@ quant_learn/
 
 - [ ] 读完 [`ROADMAP.md`](./ROADMAP.md)，把第 1 个月的任务抄到 [`TRACKING.md`](./TRACKING.md)
 - [ ] 完成 [`labs/lab-01-data-collector`](./labs/lab-01-data-collector/)：把一个交易所的 K 线 + 资金费拉到本地，落成 parquet
+- [ ] **优先采集"没有历史"的数据**（L2 深度、强平、OI）—— 交易所不提供历史，今天不采就永久缺失
 - [ ] 在 [`journal/progress.md`](./journal/progress.md) 开第一条打卡
 
 ---
@@ -105,3 +127,15 @@ quant_learn/
 - 每天：`journal/progress.md` 一行打卡（学了什么 / 写了什么代码）
 - 每周日：更新 `TRACKING.md`，回顾本周 KPI，调整下周重点
 - 每月：回看 `ROADMAP.md`，判断是否要改方向（允许改，但要写原因）
+
+---
+
+## 相关仓库
+
+| 仓库 | 内容 |
+|---|---|
+| [**math_learn**](https://github.com/survivorff/math_learn) | 英文原版数学地基：线代 / 概率 / 统计 / 优化 / 随机过程 / 时间序列 / 数值方法 |
+
+两个仓库的接口在 [math_learn 的"数学 → 量化对照表"](https://github.com/survivorff/math_learn/blob/main/ROADMAP.md)：
+- 学数学时 → 查表知道它将来用在这里的哪一章
+- 在这里被卡住时 → 反查表知道该补哪块数学
